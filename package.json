@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"start": "node index.js",
-		"build": "npx tsc",
+		"build": "rimraf dist && tsc",
 		"start:prod": "node ./build/index.js",
 		"start:dev": "nodemon ./src/index.ts"
 	},
