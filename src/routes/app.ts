@@ -12,6 +12,10 @@ import {
 
 const router = Router();
 
+router.get('/', (req, res) => {
+  res.status(200).json('Welcome, your app is working well')
+})
+
 router.get("/users", getUsers);
 router.get("/users/:userId", getUser);
 
