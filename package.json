@@ -9,7 +9,7 @@
 	"scripts": {
 		"start": "node index.js",
 		"build": "tsc --build",
-		"start:prod": "node ./dist/index.js",
+		"start:prod": "node ./build/index.js",
 		"start:dev": "nodemon ./src/index.ts"
 	},
 	"keywords": [],

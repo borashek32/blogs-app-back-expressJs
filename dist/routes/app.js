@@ -3,6 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const AppController_1 = require("../controllers/AppController");
 const router = (0, express_1.Router)();
+router.get('/', (req, res) => {
+    res.status(200).json('Welcome, your app is working well');
+});
 router.get("/users", AppController_1.getUsers);
 router.get("/users/:userId", AppController_1.getUser);
 router.get("/users/:userId/posts", AppController_1.getUserPosts);
