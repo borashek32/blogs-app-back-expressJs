@@ -3,18 +3,25 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
-	"engines": {
-		"node": "20.x"
-	},
 	"scripts": {
-		"predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node api/index.ts",
-		"build": "npx tsc",
-		"ts.check": "tsc --project tsconfig.json",
-		"add-build": "git add dist"
-	},
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "pre-prod": "rimraf dist && npm run build",
+    "dev": "nodemon --watch src --exec ts-node src/index.ts",
+    "predev": "npm run build",
+    "prepare:enviroment": "node scripts/dev-enviroment.cjs",
+    "format": "prettier --write \"src/**/*.(js|ts)\"",
+    "lint": "eslint src --ext .js,.ts",
+    "lint:fix": "eslint src --fix --ext .js,.ts",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "engines": {
+    "node": ">=16"
+  },
 	"pre-commit": [
 		"ts.check",
 		"build",
